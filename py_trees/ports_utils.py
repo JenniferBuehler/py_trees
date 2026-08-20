@@ -318,7 +318,7 @@ def apply_type_hints(
             continue
 
         # Obtain the type hint with fallback to the constructor's **kwargs annotation, if any.
-        tp = hints[k] if k in hints else hints.get("kwargs")
+        tp = hints.get(k, hints.get("kwargs"))
         # Default behavior: keep the original value.
         # Warning will be printed at the end of this loop if it failed to be converted.
         converted[k] = v
